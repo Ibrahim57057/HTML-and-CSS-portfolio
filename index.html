@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISMAIL TAIWO | Web Developer</title>
+    <style>
+        /* CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Global Styles with Animated Gradient */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(-45deg, #f9f9f9, #e0e0e0, #f0f8ff, #f9f9f9);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        a { text-decoration: none; }
+        
+        /* Color Animation Keyframes */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes headerColor {
+            0% { color: #2c3e50; }
+            25% { color: #3498db; }
+            50% { color: #9b59b6; }
+            75% { color: #e74c3c; }
+            100% { color: #2c3e50; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes progress {
+            from { width: 0; }
+            to { width: var(--skill-level); }
+        }
+        
+        @keyframes colorPulse {
+            0% { background-color: #2c3e50; }
+            50% { background-color: #3498db; }
+            100% { background-color: #2c3e50; }
+        }
+        
+        @keyframes rainbowBorder {
+            0% { border-color: #2c3e50; }
+            25% { border-color: #3498db; }
+            50% { border-color: #9b59b6; }
+            75% { border-color: #e74c3c; }
+            100% { border-color: #2c3e50; }
+        }
+        
+        /* Header with Color Animation */
+        header {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #e74c3c, #f1c40f, #2ecc71, #3498db);
+            background-size: 400% 100%;
+            animation: gradientBG 8s linear infinite;
+        }
+        
+        header h1 { 
+            font-size: 2.8rem; 
+            margin-bottom: 0.5rem;
+            animation: headerColor 10s infinite;
+        }
+        
+        header p { 
+            font-size: 1.3rem; 
+            opacity: 0.9;
+            animation: headerColor 10s infinite 2s;
+        }
+        
+        /* Sections with staggered animations */
+        section { 
+            padding: 3rem 10%;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        
+        /* About Me */
+        .about { 
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .about h2, .skills h2, .projects h2 { 
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about h2::after, .skills h2::after, .projects h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            animation: gradientBG 5s ease infinite;
+        }
+        
+        .about p { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Skills with animated gradient bars */
+        .skills {
+            background: rgba(236, 240, 241, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .skill-container {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+        
+        .skill-item {
+            margin-bottom: 1.8rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .skill-bar {
+            height: 12px;
+            background: #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 6px;
+            width: 0;
+            transition: width 1.5s ease-out;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            background-size: 200% 100%;
+            animation: gradientBG 3s ease infinite;
+        }
+        
+        /* Projects with colorful hover animations */
+        .projects {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            animation: rainbowBorder 8s infinite linear;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            animation: none;
+            border-color: #3498db;
+        }
+        
+        .project-card h3 {
+            padding: 1.2rem;
+            background: #2c3e50;
+            color: white;
+            transition: all 0.4s ease;
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .project-card:hover h3 {
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            animation: gradientBG 3s ease infinite;
+        }
+        
+        .project-card p {
+            padding: 1.2rem;
+            margin: 0;
+            color: #555;
+        }
+        
+        /* Footer with animated gradient */
+        footer {
+            background: linear-gradient(-45deg, #2c3e50, #3498db, #2c3e50);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+        
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            color: white;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: colorPulse 2s infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            section { padding: 2rem 5%; }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1.1rem; }
+        }
+        
+        /* Animation trigger class */
+        .animate {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .skill-visible .skill-progress {
+            width: var(--skill-level);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with animated gradient border -->
+    <header>
+        <h1>ISMAIL TAIWO AKANBI</h1>
+        <p>Web Developer & Software Engineering Student</p>
+    </header>
+    
+    <!-- About Me -->
+    <section class="about">
+        <h2>About Me</h2>
+        <p>
+            I'm a 200-level Software Engineering student at First Technical University, passionate about 
+            building web solutions and reading tech-related books. I love turning ideas into code and creating
+            beautiful, functional websites with engaging user experiences.
+        </p>
+    </section>
+    
+    <!-- Skills -->
+    <section class="skills">
+        <h2>Skills</h2>
+        <div class="skill-container">
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>HTML</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>CSS</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>JavaScript</span>
+                    <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 75%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>Python</span>
+                    <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 70%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>UI/UX Design</span>
+                    <span>65%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 65%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects -->
+    <section class="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>A responsive portfolio with animated elements built with pure HTML and CSS.</p>
+            </div>
+            <div class="project-card">
+                <h3>To-Do App</h3>
+                <p>A colorful task manager with drag-and-drop functionality using JavaScript.</p>
+            </div>
+            <div class="project-card">
+                <h3>University Blog</h3>
+                <p>A tech blog featuring articles on web development and software engineering.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <h3>Get In Touch</h3>
+        <div class="contact-links">
+            <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+            </a>
+            <a href="https://github.com/google/fonts" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/feed/" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    
+                    // Special case for skills section
+                    if (entry.target.classList.contains('skills')) {
+                        entry.target.classList.add('skill-visible');
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = `hsl(${Math.random() * 360}, 80%, 60%)`;
+            });
+        });
+    </script>
+</body>
+</html>
